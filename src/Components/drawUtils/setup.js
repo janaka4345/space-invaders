@@ -1,6 +1,11 @@
+import useStore from "../gameState/useStore";
+
+const ch = useStore.getState().ch
+const cw = useStore.getState().cw
 function setup(p5) {
     return () => {
-        p5.createCanvas(400, 400);
+        console.log('setup ran');
+        p5.createCanvas(cw, ch);
         // p5.image(image, 0, 0)
     };
 }
