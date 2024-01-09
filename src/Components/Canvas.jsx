@@ -2,14 +2,13 @@ import { ReactP5Wrapper } from "@p5-wrapper/react";
 import sketch from "./drawUtils/sketch";
 import { Bodies, Composite, Engine, Runner } from "matter-js";
 import { useEffect } from "react";
-import useStore from "./gameState/useStore";
+import useGameStore from "./gameState/useGameStore";
 
 export default function Canvas() {
-  const engine = useStore((state) => state.engine);
-  const ch = useStore((state) => state.ch);
-  const cw = useStore((state) => state.cw);
+  const engine = useGameStore((state) => state.engine);
+  const ch = useGameStore((state) => state.ch);
+  const cw = useGameStore((state) => state.cw);
   useEffect(() => {
-    console.log("effect ran");
     // create runner
     const runner = Runner.create();
 
@@ -37,7 +36,7 @@ export default function Canvas() {
       }),
       Bodies.rectangle(cw / 2, ch / 2, 100, 20, {
         isStatic: true,
-        label: "wall",
+        label: "obstacle",
         angle: Math.PI / 4,
       }),
     ]);
