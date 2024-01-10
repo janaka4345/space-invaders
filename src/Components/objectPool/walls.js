@@ -27,11 +27,7 @@ export function addWalls() {
         isStatic: true,
         label: "wall",
     })
-    //player
-    const player = Bodies.rectangle(cw / 2, ch - 60, 50, 50, {
-        // isStatic: true,
-        label: "player",
-    })
 
-    Composite.add(engine.world, [leftWall, rightWall, bottomWall, player]);
+
+    Composite.add(engine.world, [leftWall, rightWall, bottomWall]);
 }

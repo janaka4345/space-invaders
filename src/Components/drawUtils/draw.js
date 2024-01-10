@@ -2,6 +2,7 @@ import useGameStore from "../gameState/useGameStore";
 
 export default function draw(p5) {
     const engine = useGameStore.getState().engine
+    // const engine = useGameStore(state => state.engine)
     const ch = useGameStore.getState().ch
     const cw = useGameStore.getState().cw
     const image = useGameStore.getState().backgroundImage
