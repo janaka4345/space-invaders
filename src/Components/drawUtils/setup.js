@@ -1,5 +1,6 @@
 import useStore from "../gameState/useGameStore";
 import { addPlayer } from "../objectPool/player";
+import { addProjectiles } from "../objectPool/projectiles";
 import { addWalls } from "../objectPool/walls";
 
 function setup(p5) {
@@ -9,6 +10,7 @@ function setup(p5) {
         p5.createCanvas(cw, ch);
         addWalls();
         addPlayer()
+        addProjectiles()
     };
 }
 export default setup;
