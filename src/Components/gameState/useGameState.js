@@ -2,13 +2,9 @@ import { Engine } from 'matter-js';
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 console.log('game state ran');
-// const playerState={
-//     Idle:'idle',
-//     Walk:'walk',
-//     Shoot:'shoot',
-//     Dead:'dead'
-// }
-const useGameStore = create(devtools((set) => ({
+
+const useGameState = create(devtools((set) => ({
+    player: null,
     playerState: 'Idle',
     playerVelocityX: 0,
     playerVelocityY: 0,
@@ -29,4 +25,4 @@ const useGameStore = create(devtools((set) => ({
     }))
 
 })))
-export default useGameStore;
+export default useGameState;

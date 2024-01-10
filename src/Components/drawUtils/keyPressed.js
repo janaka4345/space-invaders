@@ -1,7 +1,24 @@
+import { Body } from "matter-js";
+import useGameState from "../gameState/useGameState";
 
-import useGameStore from "../gameState/useGameStore";
+
 function keyPressed(p5) {
-    console.log(p5.keyCode);
+    const player = useGameState.getState().player
+    // console.log(p5.keyCode);
+
+    const position = player.position
+    if (p5.keyCode === 65 || p5.keyCode === 37) {
+        Body.setPosition(player, { x: position.x - 2, y: position.y })
+    }
+    if (p5.keyCode === 68 || p5.keyCode === 39) {
+        Body.setPosition(player, { x: position.x + 2, y: position.y })
+    }
+    if (p5.keyCode === 87 || p5.keyCode === 38) {
+        Body.setPosition(player, { x: position.x, y: position.y - 2 })
+    }
+    if (p5.keyCode === 83 || p5.keyCode === 40) {
+        Body.setPosition(player, { x: position.x, y: position.y + 2 })
+    }
 
 }
 export default keyPressed;
