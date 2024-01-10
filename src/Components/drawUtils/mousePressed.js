@@ -1,6 +1,7 @@
 import { Bodies, Composite } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
 function mousePressed(p5) {
+    console.log('mouse pressed');
     const engine = useGameStore.getState().engine
     if (
         p5.mouseX > p5.canvas.width ||
