@@ -10,5 +10,6 @@ function sketch(p5) {
     p5.draw = draw(p5);
     p5.mousePressed = () => mousePressed(p5);
     p5.keyPressed = () => keyPressed(p5);
+
 }
 export default sketch;

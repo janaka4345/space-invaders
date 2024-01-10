@@ -1,4 +1,5 @@
 import useGameStore from "../gameState/useGameStore";
+import keyboardInputs from "./keyboardInputs";
 
 export default function draw(p5) {
     const engine = useGameStore.getState().engine
@@ -7,6 +8,7 @@ export default function draw(p5) {
     const cw = useGameStore.getState().cw
     const image = useGameStore.getState().backgroundImage
     return () => {
+        p5.keyIsPressed ? keyboardInputs(p5) : null;
         p5.background(255, 255, 255);
         p5.image(image, 0, 0, cw, ch, 0, 0, image.width, image.height);
         engine.world.bodies.forEach((body) => {
