@@ -1,6 +1,6 @@
 import { Bodies, Composite } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
-import useGameState from "../gameState/useGameState";
+import usePlayerState from "../gameState/usePlayerState";
 
 //create boundary walls
 
@@ -13,6 +13,6 @@ export function addPlayer() {
         isStatic: true,
         label: "player",
     })
-    useGameState.setState({ player })
+    usePlayerState.setState({ player })
     Composite.add(engine.world, [player]);
 }

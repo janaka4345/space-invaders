@@ -3,11 +3,11 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 console.log('game state ran');
 
-const useGameState = create(devtools((set) => ({
+const usePlayerState = create(devtools((set) => ({
     player: null,
     playerState: 'Idle',
-    playerVelocityX: 0,
-    playerVelocityY: 0,
+    playerVelocityX: 5,
+    playerVelocityY: 5,
     setPlayerVelocity: (velocity) => set((state) => ({
         playerVelocityX: state.playerVelocityX + velocity.x,
         playerVelocityY: state.playerVelocityY + velocity.y
@@ -25,4 +25,4 @@ const useGameState = create(devtools((set) => ({
     }))
 
 })))
-export default useGameState;
+export default usePlayerState;
