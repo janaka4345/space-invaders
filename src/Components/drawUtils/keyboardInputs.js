@@ -27,10 +27,7 @@ function keyboardInputs(p5) {
         Body.setPosition(player, { x: position.x, y: position.y + speedY })
     }
 
-    //fire bullets
-    if (p5.keyIsDown(32)) {
-        Body.setVelocity(player, { x: position.x, y: position.y + speedY })
-    }
+
 
 }
 export default keyboardInputs;
