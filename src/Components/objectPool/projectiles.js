@@ -17,8 +17,11 @@ export function addProjectiles() {
             Bodies.rectangle(400 / 2, 400 / 2, 10, 10, {
                 isStatic: true,
                 label: "projectiles",
-                speedX: 0,
-                speedY: -5,
+                friction: 0,
+                frictionAir: 0,
+                frictionStatic: 0,
+                // inertia: 99999
+
             })
         )
     }
