@@ -1,12 +1,14 @@
 import { Bodies, Composite } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
+import { useRef } from "react";
 const engine = useGameStore.getState().engine
 const cw = useGameStore.getState().cw
 const ch = useGameStore.getState().ch
 
 //create boundary walls
 
-export function addWalls() {
+export default function useAddWalls() {
+    const t = useRef(0)
     //top wall
     const topWall = Bodies.rectangle(cw / 2, -10, cw, 20, {
         isStatic: true,

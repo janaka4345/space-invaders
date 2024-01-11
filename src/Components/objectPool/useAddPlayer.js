@@ -1,10 +1,12 @@
 import { Bodies, Composite } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
 import usePlayerState from "../gameState/usePlayerState";
+import { useRef } from "react";
 
 //create boundary walls
 
-export function addPlayer() {
+export default function useAddPlayer() {
+    const t = useRef(0)
     const engine = useGameStore.getState().engine
     const cw = useGameStore.getState().cw
     const ch = useGameStore.getState().ch

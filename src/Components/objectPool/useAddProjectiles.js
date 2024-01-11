@@ -1,11 +1,13 @@
 import { Bodies, Composite } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
 import usePlayerState from "../gameState/usePlayerState";
+import { useRef } from "react";
 // import useProjectilesState from "../gameState/useProjectilesState";
 
 //create Projectiless
 
-export function addProjectiles() {
+export default function useAddProjectiles() {
+    const t = useRef(0)
     const engine = useGameStore.getState().engine
     // const { position } = usePlayerState.getState().player
     // const cw = useGameStore.getState().cw
