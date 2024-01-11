@@ -80,9 +80,10 @@ export default function draw(p5) {
                     body.vertices[3].y
                 );
                 p5.pop();
-                // if (body.position.x < 0 || body.position.y < 0 || body.position.x > cw || body.position.y > ch) {
-                //     body.label = 'projectiles'
-                // }
+                if (body.position.x < 0 || body.position.y < 0 || body.position.x > cw || body.position.y > ch) {
+                    body.label = 'projectiles'
+
+                }
             }
         });
     };
