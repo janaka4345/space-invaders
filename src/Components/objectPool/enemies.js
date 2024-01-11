@@ -12,11 +12,11 @@ export function addEnemies() {
     const enemies = [];
     for (let i = 0; i < 10; i++) {
         enemies.push(
-            Bodies.rectangle(- i * 120 - 120, - i * 120 - 120, 100, 100, {
-                isStatic: true,
+            Bodies.rectangle(- i * 120 - 120, - i * 120 - 120, 50, 50, {
+                // isStatic: true,
                 label: "enemies",
-                speedX: 0,
-                speedY: -5,
+                speedX: 5,
+                speedY: 5,
             })
         )
     }

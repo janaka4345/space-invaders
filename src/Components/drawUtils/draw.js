@@ -1,6 +1,7 @@
 import { Body } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
 import keyboardInputs from "./keyboardInputs";
+import aiInputs from "./aiinputs";
 
 export default function draw(p5) {
     const engine = useGameStore.getState().engine
@@ -11,9 +12,10 @@ export default function draw(p5) {
     return () => {
         p5.keyIsPressed ? keyboardInputs(p5) : null;
         p5.background(255, 255, 255);
+        p5.frameCount % 100 == 0 ? aiInputs(p5) : null;
         p5.image(image, 0, 0, cw, ch, 0, 0, image.width, image.height);
         engine.world.bodies.forEach((body) => {
-            if (body.label === "enemies") {
+            if (body.label === "enemiesEnter") {
                 // p5.fill(255, 0, 0);
                 p5.push();
                 p5.fill(255, 0, 0);
