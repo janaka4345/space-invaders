@@ -15,8 +15,10 @@ export function addProjectiles() {
     for (let i = 0; i < 10; i++) {
         projectiles.push(
             Bodies.rectangle(400 / 2, 400 / 2, 10, 10, {
-                // isStatic: true,
+                isStatic: true,
                 label: "projectiles",
+                speedX: 0,
+                speedY: -5,
             })
         )
     }

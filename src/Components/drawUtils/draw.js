@@ -1,3 +1,4 @@
+import { Body } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
 import keyboardInputs from "./keyboardInputs";
 
@@ -30,7 +31,7 @@ export default function draw(p5) {
                 );
                 p5.pop();
             }
-            if (body.label === "wall" || body.label === "projectilesFired") {
+            if (body.label === "wall") {
                 p5.push();
                 p5.rectMode(p5.CENTER);
                 p5.fill(0, 255, 0);
@@ -63,6 +64,28 @@ export default function draw(p5) {
                     body.vertices[3].y
                 );
                 p5.pop();
+            }
+            if (body.label === "projectilesFired") {
+                p5.push();
+                p5.rectMode(p5.CENTER);
+                p5.fill(0, 255, 0);
+                p5.quad(
+                    body.vertices[0].x,
+                    body.vertices[0].y,
+                    body.vertices[1].x,
+                    body.vertices[1].y,
+                    body.vertices[2].x,
+                    body.vertices[2].y,
+                    body.vertices[3].x,
+                    body.vertices[3].y
+                );
+                p5.pop();
+                // setting the velocity of the bullet // due to energy loss bug in matterjs
+                Body.setPosition(body, { x: body.position.x, y: body.position.y + body.speedY })
+                //restore the bullet object for reuse
+                if (body.position.x < 0 || body.position.y < 0 || body.position.x > cw || body.position.y > ch) {
+                    body.label = 'projectiles'
+                }
             }
         });
     };
