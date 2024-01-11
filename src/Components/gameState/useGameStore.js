@@ -14,7 +14,8 @@ const useGameStore = create(devtools((set) => ({
     beetleImage: null,
     playerjetsImage: null,
     playerImage: null,
-    projectiles: null
+    projectiles: null,
+    enemies: null
 
     // setWidth: (width) => set((state) => ({
     //     cw: width

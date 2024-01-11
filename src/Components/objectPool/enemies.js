@@ -3,23 +3,23 @@ import useGameStore from "../gameState/useGameStore";
 
 //create Projectiless
 
-export function addProjectiles() {
+export function addEnemies() {
     const engine = useGameStore.getState().engine
     // const { position } = usePlayerState.getState().player
     const cw = useGameStore.getState().cw
     const ch = useGameStore.getState().ch
     //Projectiles
-    const projectiles = [];
+    const enemies = [];
     for (let i = 0; i < 10; i++) {
-        projectiles.push(
-            Bodies.rectangle(cw + (i + 1) * 10, ch + (i + 1) * 10, 10, 10, {
-                // isStatic: true,
-                label: "projectiles",
+        enemies.push(
+            Bodies.rectangle(- i * 120 - 120, - i * 120 - 120, 100, 100, {
+                isStatic: true,
+                label: "enemies",
                 speedX: 0,
                 speedY: -5,
             })
         )
     }
-    useGameStore.setState({ projectiles })
-    Composite.add(engine.world, [...projectiles]);
+    useGameStore.setState({ enemies })
+    Composite.add(engine.world, [...enemies]);
 }
