@@ -26,6 +26,17 @@ function keyboardInputs(p5) {
     if ((p5.keyIsDown(83) || p5.keyIsDown(40)) && position.y + 25 < ch) {
         Body.setPosition(player, { x: position.x, y: position.y + speedY })
     }
+    // if (p5.keyIsDown(32)) {
+    //     console.log('j');
+    //     const projectiles = useGameStore.getState().projectiles
+
+    //     const { position } = usePlayerState.getState().player
+    //     const getProjectile = projectiles.find(projectile => projectile.label === 'projectiles')
+    //     console.log(getProjectile.id);
+    //     Body.setPosition(getProjectile, { x: position.x, y: position.y - 35 }, { updateVelocity: false })
+    //     Body.setVelocity(getProjectile, { x: 0, y: - 5 })
+    //     getProjectile.label = 'projectilesFired'
+    // }
 
 
 

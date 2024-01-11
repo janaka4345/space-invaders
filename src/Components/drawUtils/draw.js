@@ -99,7 +99,7 @@ export default function draw(p5) {
                 );
                 p5.pop();
                 // setting the velocity of the bullet // due to energy loss bug in matterjs
-                Body.setPosition(body, { x: body.position.x, y: body.position.y + body.speedY })
+                // Body.setPosition(body, { x: body.position.x, y: body.position.y + body.speedY })
                 //restore the bullet object for reuse
                 if (body.position.x < 0 || body.position.y < 0 || body.position.x > cw || body.position.y > ch) {
                     body.label = 'projectiles'
