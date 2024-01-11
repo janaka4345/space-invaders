@@ -10,8 +10,8 @@ function keyPressed(p5) {
     const { position } = usePlayerState.getState().player
     const getProjectile = projectiles.find(projectile => projectile.label === 'projectiles')
     console.log(getProjectile.id);
-    // Body.setPosition(getProjectile, { x: position.x, y: position.y - 35 }, { updateVelocity: false })
-    // Body.setVelocity(getProjectile, { x: 0, y: - 5 })
+    Body.setPosition(getProjectile, { x: position.x, y: position.y - 35 }, { updateVelocity: false })
+    Body.setVelocity(getProjectile, { x: 0, y: - 5 })
     getProjectile.label = 'projectilesFired'
     // }
 

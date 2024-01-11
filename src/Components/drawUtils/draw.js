@@ -65,7 +65,7 @@ export default function draw(p5) {
                 );
                 p5.pop();
             }
-            if (body.label === "projectiles") {
+            if (body.label === "projectilesFired") {
                 p5.push();
                 p5.rectMode(p5.CENTER);
                 p5.fill(0, 255, 0);
