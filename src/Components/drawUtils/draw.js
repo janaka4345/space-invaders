@@ -2,6 +2,7 @@ import { Body } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
 import keyboardInputs from "./keyboardInputs";
 import aiInputs from "./aiinputs";
+import usePlayerState from "../gameState/usePlayerState";
 
 export default function draw(p5) {
     const engine = useGameStore.getState().engine
@@ -10,6 +11,7 @@ export default function draw(p5) {
     const cw = useGameStore.getState().cw
     const setNumOfEnemies = useGameStore.getState().setNumOfEnemies
     const image = useGameStore.getState().backgroundImage
+    const setScore = usePlayerState.getState().setScore
     // aiInputs(p5)
     const totalEnemies = useGameStore.getState().totalEnemies
     return () => {
@@ -18,11 +20,19 @@ export default function draw(p5) {
         p5.background(255, 255, 255);
         if (p5.frameCount % 100 === 0 && numOfEnemies < totalEnemies) {
             aiInputs(p5)
-            setNumOfEnemies()
+            setNumOfEnemies(1)
         }
         p5.image(image, 0, 0, cw, ch, 0, 0, image.width, image.height);
         engine.world.bodies.forEach((body) => {
             if (body.label === "enemiesEnter") {
+                if (body.health === 0) {
+                    body.label = 'enemies'
+                    Body.setPosition(body, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
+                    Body.setVelocity(body, { x: 0, y: 0 })
+                    body.health = 100
+                    setNumOfEnemies(-1)
+                    return;
+                }
                 // p5.fill(255, 0, 0);
                 p5.push();
                 p5.fill(255, 0, 0);
@@ -134,16 +144,31 @@ export default function draw(p5) {
             }
         });
         engine.detector.pairs.collisionActive.forEach((pair) => {
+            console.log(pair);
             //reseting the enemy upon collision
-            if (pair.bodyB.label === "enemiesEnter") {
-                // pair.bodyB.label = 'enemies'
-                // Body.setPosition(pair.bodyB, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
-                // Body.setVelocity(pair.bodyB, { x: 0, y: 0 })
-            }
-            if (pair.bodyA.label === "enemiesEnter") {
+            if (pair.bodyA.label === "enemiesEnter" && pair.bodyB.label === "projectilesFired") {
                 // pair.bodyA.label = 'enemies'
+                pair.bodyB.label = 'projectiles'
                 // Body.setPosition(pair.bodyA, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
+                Body.setPosition(pair.bodyB, { x: - Math.random() * 120, y: - Math.random() * 120 })
                 // Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
+                Body.setVelocity(pair.bodyB, { x: 0, y: 0 })
+                //increase score
+                setScore(10);
+                //decrese enemy health
+                pair.bodyA.health -= 20
+            }
+            if (pair.bodyB.label === "enemiesEnter" && pair.bodyA.label === "projectilesFired") {
+                // pair.bodyA.label = 'enemies'
+                pair.bodyA.label = 'projectiles'
+                // Body.setPosition(pair.bodyA, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
+                Body.setPosition(pair.bodyA, { x: - Math.random() * 120, y: - Math.random() * 120 })
+                // Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
+                Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
+                //increase score
+                setScore(10);
+                //decrese enemy health
+                pair.bodyB.health -= 20
             }
 
         })

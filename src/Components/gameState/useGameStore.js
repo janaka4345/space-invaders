@@ -16,11 +16,11 @@ const useGameStore = create(devtools((set) => ({
     playerImage: null,
     projectiles: null,
     enemies: null,
-    totalEnemies: 3,
+    totalEnemies: 1,
     numOfEnemies: 0,
 
-    setNumOfEnemies: () => set(state => ({
-        numOfEnemies: state.numOfEnemies + 1
+    setNumOfEnemies: (num) => set(state => ({
+        numOfEnemies: state.numOfEnemies + num
     })),
     setEnemies: (enemies) => set(state => ({
         totalEnemies: state.totalEnemies + enemies
