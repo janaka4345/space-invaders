@@ -12,7 +12,7 @@ export default function draw(p5) {
     return () => {
         p5.keyIsPressed ? keyboardInputs(p5) : null;
         p5.background(255, 255, 255);
-        p5.frameCount % 100 == 0 ? aiInputs(p5) : null;
+        p5.frameCount % 1000 == 0 ? aiInputs(p5) : null;
         p5.image(image, 0, 0, cw, ch, 0, 0, image.width, image.height);
         engine.world.bodies.forEach((body) => {
             if (body.label === "enemiesEnter") {
