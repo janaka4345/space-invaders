@@ -5,7 +5,7 @@ import aiInputs from "./aiinputs";
 import usePlayerState from "../gameState/usePlayerState";
 
 export default function draw(p5) {
-    const engine = useGameStore.getState().engine
+
     // const engine = useGameStore(state => state.engine)
     const ch = useGameStore.getState().ch
     const cw = useGameStore.getState().cw
@@ -14,6 +14,7 @@ export default function draw(p5) {
     const setScore = usePlayerState.getState().setScore
     // aiInputs(p5)
     const totalEnemies = useGameStore.getState().totalEnemies
+    const engine = useGameStore.getState().engine
     return () => {
         const numOfEnemies = useGameStore.getState().numOfEnemies
         p5.keyIsPressed ? keyboardInputs(p5) : null;
@@ -148,7 +149,6 @@ export default function draw(p5) {
             //reseting the enemy upon collision
             if (pair.bodyA.label === "enemiesEnter" && pair.bodyB.label === "projectilesFired") {
                 // pair.bodyA.label = 'enemies'
-                pair.bodyB.label = 'projectiles'
                 // Body.setPosition(pair.bodyA, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
                 Body.setPosition(pair.bodyB, { x: - Math.random() * 120, y: - Math.random() * 120 })
                 // Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
@@ -157,10 +157,10 @@ export default function draw(p5) {
                 setScore(10);
                 //decrese enemy health
                 pair.bodyA.health -= 20
+                pair.bodyB.label = 'projectiles'
             }
             if (pair.bodyB.label === "enemiesEnter" && pair.bodyA.label === "projectilesFired") {
                 // pair.bodyA.label = 'enemies'
-                pair.bodyA.label = 'projectiles'
                 // Body.setPosition(pair.bodyA, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
                 Body.setPosition(pair.bodyA, { x: - Math.random() * 120, y: - Math.random() * 120 })
                 // Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
@@ -169,6 +169,7 @@ export default function draw(p5) {
                 setScore(10);
                 //decrese enemy health
                 pair.bodyB.health -= 20
+                pair.bodyA.label = 'projectiles'
             }
 
         })

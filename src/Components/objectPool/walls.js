@@ -8,13 +8,13 @@ const ch = useGameStore.getState().ch
 
 export function addWalls() {
     //top wall
-    const topWall = Bodies.rectangle(cw / 2, -10, cw, 20, {
-        isStatic: true,
-        label: "wall",
-        restitution: 1,
-        friction: 0
+    // const topWall = Bodies.rectangle(cw / 2, -10, cw, 20, {
+    //     isStatic: true,
+    //     label: "wall",
+    //     restitution: 1,
+    //     friction: 0
 
-    })
+    // })
     //left wall
     const leftWall = Bodies.rectangle(-10, ch / 2, 20, ch, {
         isStatic: true,
@@ -38,5 +38,5 @@ export function addWalls() {
     })
 
 
-    Composite.add(engine.world, [leftWall, rightWall, bottomWall, topWall]);
+    Composite.add(engine.world, [leftWall, rightWall, bottomWall]);
 }

@@ -18,8 +18,8 @@ export function addEnemies() {
                 speedX: 5,
                 speedY: 5,
                 health: 100,
-                restitution: 1,
-                friction: 0
+                // restitution: 1,
+                // friction: 0
             })
         )
     }
