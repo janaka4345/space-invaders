@@ -12,7 +12,7 @@ export default function draw(p5) {
     return () => {
         p5.keyIsPressed ? keyboardInputs(p5) : null;
         p5.background(255, 255, 255);
-        p5.frameCount % 1000 == 0 ? aiInputs(p5) : null;
+        p5.frameCount % 10 == 0 ? aiInputs(p5) : null;
         p5.image(image, 0, 0, cw, ch, 0, 0, image.width, image.height);
         engine.world.bodies.forEach((body) => {
             if (body.label === "enemiesEnter") {
@@ -127,8 +127,19 @@ export default function draw(p5) {
             }
         });
         engine.detector.pairs.collisionActive.forEach((pair) => {
-            pair.bodyB.label = 'box blue'
-            pair.bodyA.label = 'box pink'
+            //reseting the enemy upon collision
+            if (pair.bodyB.label === "enemiesEnter") {
+                pair.bodyB.label = 'enemies'
+                Body.setPosition(pair.bodyB, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
+                Body.setVelocity(pair.bodyB, { x: 0, y: 0 })
+            }
+            if (pair.bodyA.label === "enemiesEnter") {
+                pair.bodyA.label = 'enemies'
+                Body.setPosition(pair.bodyA, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
+                Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
+            }
+
+
 
         })
     };
