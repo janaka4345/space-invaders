@@ -17,6 +17,9 @@ export function addEnemies() {
                 label: "enemies",
                 speedX: 5,
                 speedY: 5,
+                health: 100,
+                restitution: 1,
+                friction: 0
             })
         )
     }

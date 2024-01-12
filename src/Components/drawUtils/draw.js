@@ -8,11 +8,18 @@ export default function draw(p5) {
     // const engine = useGameStore(state => state.engine)
     const ch = useGameStore.getState().ch
     const cw = useGameStore.getState().cw
+    const setNumOfEnemies = useGameStore.getState().setNumOfEnemies
     const image = useGameStore.getState().backgroundImage
+    // aiInputs(p5)
+    const totalEnemies = useGameStore.getState().totalEnemies
     return () => {
+        const numOfEnemies = useGameStore.getState().numOfEnemies
         p5.keyIsPressed ? keyboardInputs(p5) : null;
         p5.background(255, 255, 255);
-        p5.frameCount % 10 == 0 ? aiInputs(p5) : null;
+        if (p5.frameCount % 100 === 0 && numOfEnemies < totalEnemies) {
+            aiInputs(p5)
+            setNumOfEnemies()
+        }
         p5.image(image, 0, 0, cw, ch, 0, 0, image.width, image.height);
         engine.world.bodies.forEach((body) => {
             if (body.label === "enemiesEnter") {
@@ -33,42 +40,42 @@ export default function draw(p5) {
                 );
                 p5.pop();
             }
-            if (body.label === "box blue") {
-                // p5.fill(255, 0, 0);
-                p5.push();
-                p5.fill(0, 0, 255);
-                // p5.rectMode(p5.CENTER);
-                // p5.rotate(body.angle);
-                p5.quad(
-                    body.vertices[0].x,
-                    body.vertices[0].y,
-                    body.vertices[1].x,
-                    body.vertices[1].y,
-                    body.vertices[2].x,
-                    body.vertices[2].y,
-                    body.vertices[3].x,
-                    body.vertices[3].y
-                );
-                p5.pop();
-            }
-            if (body.label === "box pink") {
-                // p5.fill(255, 0, 0);
-                p5.push();
-                p5.fill(255, 0, 255);
-                // p5.rectMode(p5.CENTER);
-                // p5.rotate(body.angle);
-                p5.quad(
-                    body.vertices[0].x,
-                    body.vertices[0].y,
-                    body.vertices[1].x,
-                    body.vertices[1].y,
-                    body.vertices[2].x,
-                    body.vertices[2].y,
-                    body.vertices[3].x,
-                    body.vertices[3].y
-                );
-                p5.pop();
-            }
+            // if (body.label === "box blue") {
+            //     // p5.fill(255, 0, 0);
+            //     p5.push();
+            //     p5.fill(0, 0, 255);
+            //     // p5.rectMode(p5.CENTER);
+            //     // p5.rotate(body.angle);
+            //     p5.quad(
+            //         body.vertices[0].x,
+            //         body.vertices[0].y,
+            //         body.vertices[1].x,
+            //         body.vertices[1].y,
+            //         body.vertices[2].x,
+            //         body.vertices[2].y,
+            //         body.vertices[3].x,
+            //         body.vertices[3].y
+            //     );
+            //     p5.pop();
+            // }
+            // if (body.label === "box pink") {
+            //     // p5.fill(255, 0, 0);
+            //     p5.push();
+            //     p5.fill(255, 0, 255);
+            //     // p5.rectMode(p5.CENTER);
+            //     // p5.rotate(body.angle);
+            //     p5.quad(
+            //         body.vertices[0].x,
+            //         body.vertices[0].y,
+            //         body.vertices[1].x,
+            //         body.vertices[1].y,
+            //         body.vertices[2].x,
+            //         body.vertices[2].y,
+            //         body.vertices[3].x,
+            //         body.vertices[3].y
+            //     );
+            //     p5.pop();
+            // }
             if (body.label === "wall") {
                 p5.push();
                 p5.rectMode(p5.CENTER);
@@ -129,17 +136,15 @@ export default function draw(p5) {
         engine.detector.pairs.collisionActive.forEach((pair) => {
             //reseting the enemy upon collision
             if (pair.bodyB.label === "enemiesEnter") {
-                pair.bodyB.label = 'enemies'
-                Body.setPosition(pair.bodyB, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
-                Body.setVelocity(pair.bodyB, { x: 0, y: 0 })
+                // pair.bodyB.label = 'enemies'
+                // Body.setPosition(pair.bodyB, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
+                // Body.setVelocity(pair.bodyB, { x: 0, y: 0 })
             }
             if (pair.bodyA.label === "enemiesEnter") {
-                pair.bodyA.label = 'enemies'
-                Body.setPosition(pair.bodyA, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
-                Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
+                // pair.bodyA.label = 'enemies'
+                // Body.setPosition(pair.bodyA, { x: - Math.random() * 1200 - 120, y: - Math.random() * 1200 - 120 })
+                // Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
             }
-
-
 
         })
     };

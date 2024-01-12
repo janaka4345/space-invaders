@@ -1,8 +1,9 @@
-import { Bodies, Composite } from "matter-js";
+
 import useGameStore from "../gameState/useGameStore";
 function mousePressed(p5) {
     const engine = useGameStore.getState().engine
-    console.log(p5.frameRate());
+
+    // console.log(p5.frameRate());
     console.log(engine);
     // if (
     //     p5.mouseX > p5.canvas.width ||

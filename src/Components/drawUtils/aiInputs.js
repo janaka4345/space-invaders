@@ -12,8 +12,6 @@ function aiInputs(p5) {
 
     const enemy = enemies.find(enemy => enemy.label === 'enemies')
     if (enemy != undefined) {
-
-
         Body.setPosition(enemy, { x: cw / 2 + Math.cos(p5.frameCount) * 150, y: ch / 2 + Math.sin(p5.frameCount) * 150 });
         Body.setVelocity(enemy, { x: Math.random() * 5 - 2.5, y: Math.random() * 5 - 2.5 });
         //check movement boundary and move the object accordingly
