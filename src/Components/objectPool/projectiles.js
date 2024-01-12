@@ -22,7 +22,7 @@ export function addProjectiles() {
             })
         )
     }
-    for (let i = 0; i < 5 * numOfEnemies; i++) {
+    for (let i = 0; i < 10 * numOfEnemies; i++) {
         enemyProjectiles.push(
             Bodies.rectangle(cw + (i + 2) * 20, ch + (i + 2) * 20, 10, 10, {
                 // isStatic: true,

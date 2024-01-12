@@ -18,7 +18,7 @@ function addBotEnemy(p5) {
     }
 
 }
-function fireEnemyProjectiles() {
+function fireEnemyProjectiles(p5) {
     const enemies = useGameStore.getState().enemies
     const player = usePlayerState.getState().player
     const enemyProjectiles = useGameStore.getState().enemyProjectiles
@@ -26,11 +26,17 @@ function fireEnemyProjectiles() {
     enemies.forEach(enemy => {
         if (enemy.label === 'enemiesEnter') {
             const enemyPosition = enemy.position
-            const playerPosition = player.position
+            // player position vector relative to the enemy 
+            const relPlayerVector = p5.createVector(player.position.x - enemyPosition.x, player.position.y - enemyPosition.y)
+            //heading relative to enemy
+            const heading = { thetaX: Math.cos(relPlayerVector.heading()), thetaY: Math.sin(relPlayerVector.heading()) }
+            //get a projectile from the pool
             const getEnemyProjectile = enemyProjectiles.find(enemyProjectile => enemyProjectile.label === 'enemyProjectiles')
             if (getEnemyProjectile != undefined) {
-                Body.setPosition(getEnemyProjectile, { x: enemyPosition.x + 10, y: enemyPosition.y + 10 });
-                Body.setVelocity(getEnemyProjectile, { x: 2, y: 2 });
+                //spawn new bullet in a enemy size +5 pixel radii circle
+                Body.setPosition(getEnemyProjectile, { x: enemyPosition.x + heading.thetaX * 55, y: enemyPosition.y + heading.thetaY * 55 });
+                //shooting the projectile in that direction
+                Body.setVelocity(getEnemyProjectile, { x: heading.thetaX * 5, y: heading.thetaY * 5 });
                 getEnemyProjectile.label = 'enemyProjectileFired'
 
             }

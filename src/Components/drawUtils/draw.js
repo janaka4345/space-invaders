@@ -23,7 +23,7 @@ export default function draw(p5) {
             setNumOfEnemies(1)
         }
         if (p5.frameCount % 50 === 0 && numOfEnemies > 0) {
-            fireEnemyProjectiles()
+            fireEnemyProjectiles(p5)
         }
         p5.image(image, 0, 0, cw, ch, 0, 0, image.width, image.height);
         engine.world.bodies.forEach((body) => {
