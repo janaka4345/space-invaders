@@ -6,6 +6,7 @@ import usePlayerState from "../gameState/usePlayerState";
 
 export default function draw(p5) {
 
+
     // const engine = useGameStore(state => state.engine)
     const ch = useGameStore.getState().ch
     const cw = useGameStore.getState().cw
