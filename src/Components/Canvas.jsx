@@ -1,6 +1,6 @@
 import { ReactP5Wrapper } from "@p5-wrapper/react";
 import sketch from "./drawUtils/sketch";
-import { Bodies, Composite, Engine, Runner } from "matter-js";
+import { Composite, Engine, Runner } from "matter-js";
 import { useEffect } from "react";
 import useGameStore from "./gameState/useGameStore";
 
