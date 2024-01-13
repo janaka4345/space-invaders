@@ -6,9 +6,6 @@ import sketch from "./canvasSetup/sketch";
 
 export default function Canvas() {
   const engine = useGameStore((state) => state.engine);
-  const ch = useGameStore((state) => state.ch);
-  const cw = useGameStore((state) => state.cw);
-  // const setWidth = useGameStore((state) => state.setWidth);
   useEffect(() => {
     // create runner
     const runner = Runner.create();
@@ -27,7 +24,6 @@ export default function Canvas() {
   return (
     <div>
       <ReactP5Wrapper sketch={sketch} />
-      {/* <button onClick={() => setWidth(600)}>change width</button> */}
     </div>
   );
 }

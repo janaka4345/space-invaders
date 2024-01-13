@@ -26,6 +26,7 @@ export default function gameDraw(p5) {
             body.label === "enemyProjectileFired" && drawEnemyProjectiles(body, p5)
 
         });
+        //handle the game logic
         handleGameLogic(p5)
 
     };

@@ -2,7 +2,7 @@ import { Bodies, Composite } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
 import usePlayerState from "../gameState/usePlayerState";
 
-//create boundary walls
+//create player
 
 export function addPlayer() {
     const engine = useGameStore.getState().engine

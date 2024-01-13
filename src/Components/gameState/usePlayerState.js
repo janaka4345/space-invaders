@@ -1,8 +1,6 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
-console.log('game state ran');
 
-const usePlayerState = create(devtools((set) => ({
+const usePlayerState = create((set) => ({
     player: null,
     playerState: 'Idle',
     playerVelocityX: 5,
@@ -32,5 +30,5 @@ const usePlayerState = create(devtools((set) => ({
         health: state.health + damage
     }))
 
-})))
+}))
 export default usePlayerState;
