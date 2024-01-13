@@ -1,8 +1,8 @@
 import { ReactP5Wrapper } from "@p5-wrapper/react";
-import sketch from "./drawUtils/sketch";
 import { Composite, Engine, Runner } from "matter-js";
 import { useEffect } from "react";
 import useGameStore from "./gameState/useGameStore";
+import sketch from "./canvasSetup/sketch";
 
 export default function Canvas() {
   const engine = useGameStore((state) => state.engine);

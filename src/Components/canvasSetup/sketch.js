@@ -1,8 +1,7 @@
-
-import gameDraw from "./gameDraw";
-import keyPressed from "./keyPressed";
-import mouseMoved from "./mouseMoved";
-import mousePressed from "./mousePressed";
+import gameDraw from "../drawUtils/gameDraw";
+import keyPressed from "../handleInputs/keyPressed";
+import mouseMoved from "../handleInputs/mouseMoved";
+import mousePressed from "../handleInputs/mousePressed";
 import preload from "./preload";
 import setup from "./setup";
 
