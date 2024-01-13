@@ -1,6 +1,5 @@
 import useGameStore from "../gameState/useGameStore";
 
-
 function preload(p5) {
     const backgroundImage = p5.loadImage('./background.png');
     const beetleImage = p5.loadImage('./beetlemorph.png');

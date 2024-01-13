@@ -1,7 +1,6 @@
 import { Engine } from 'matter-js';
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-console.log('store ran');
 const engine = Engine.create({
     gravity: { x: 0, y: 0, scale: 0 },
     // enableSleeping: true
@@ -26,13 +25,13 @@ const useGameStore = create(devtools((set) => ({
     setEnemies: (enemies) => set(state => ({
         totalEnemies: state.totalEnemies + enemies
     }))
-
-    // setWidth: (width) => set((state) => ({
-    //     cw: width
-    // })),
-    // setHeight: (height) => set((state) => ({
-    //     ch: height
-    // }))
+    ,
+    setWidth: (width) => set((state) => ({
+        cw: width
+    })),
+    setHeight: (height) => set((state) => ({
+        ch: height
+    }))
 
 
 })))

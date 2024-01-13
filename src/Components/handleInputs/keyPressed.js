@@ -3,7 +3,7 @@ import useGameStore from "../gameState/useGameStore";
 import usePlayerState from "../gameState/usePlayerState";
 
 function keyPressed(p5) {
-
+    // fire projectile when space bar pressed
     if (p5.keyIsDown(32)) {
         const projectiles = useGameStore.getState().projectiles
 

@@ -9,11 +9,8 @@ function keyboardInputs(p5) {
     const player = usePlayerState.getState().player
     const speedX = usePlayerState.getState().playerVelocityX
     const speedY = usePlayerState.getState().playerVelocityY
-    const projectiles = useGameStore.getState().projectiles
-    // console.log(p5.keyCode);
 
     const position = player.position
-    // const headingTheta = p5.createVector(p5.mouseX - position.x, p5.mouseY - position.y).heading()
 
     //check movement boundary and move the object accordingly
     if ((p5.keyIsDown(65) || p5.keyIsDown(37)) && position.x - 25 > 0) {
@@ -29,20 +26,6 @@ function keyboardInputs(p5) {
     if ((p5.keyIsDown(83) || p5.keyIsDown(40)) && position.y + 25 < ch) {
         Body.setPosition(player, { x: position.x, y: position.y + speedY })
     }
-
-    // if (p5.keyIsDown(32)) {
-    //     console.log('j');
-    //     const projectiles = useGameStore.getState().projectiles
-
-    //     const { position } = usePlayerState.getState().player
-    //     const getProjectile = projectiles.find(projectile => projectile.label === 'projectiles')
-    //     console.log(getProjectile.id);
-    //     Body.setPosition(getProjectile, { x: position.x, y: position.y - 35 }, { updateVelocity: false })
-    //     Body.setVelocity(getProjectile, { x: 0, y: - 5 })
-    //     getProjectile.label = 'projectilesFired'
-    // }
-
-
 
 }
 export default keyboardInputs;

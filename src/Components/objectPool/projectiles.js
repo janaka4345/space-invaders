@@ -6,7 +6,6 @@ import useGameStore from "../gameState/useGameStore";
 export function addProjectiles() {
     const engine = useGameStore.getState().engine
     const numOfEnemies = useGameStore.getState().totalEnemies
-    // const { position } = usePlayerState.getState().player
     const cw = useGameStore.getState().cw
     const ch = useGameStore.getState().ch
     //Projectiles

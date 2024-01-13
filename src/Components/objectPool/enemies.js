@@ -1,13 +1,10 @@
 import { Bodies, Composite } from "matter-js";
 import useGameStore from "../gameState/useGameStore";
 
-//create Projectiless
+//create Projectiles
 
 export function addEnemies() {
     const engine = useGameStore.getState().engine
-    // const { position } = usePlayerState.getState().player
-    const cw = useGameStore.getState().cw
-    const ch = useGameStore.getState().ch
     //Projectiles
     const enemies = [];
     for (let i = 0; i < 10; i++) {

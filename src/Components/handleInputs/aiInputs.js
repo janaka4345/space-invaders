@@ -22,7 +22,6 @@ function fireEnemyProjectiles(p5) {
     const enemies = useGameStore.getState().enemies
     const player = usePlayerState.getState().player
     const enemyProjectiles = useGameStore.getState().enemyProjectiles
-    // console.log(enemies);
     enemies.forEach(enemy => {
         if (enemy.label === 'enemiesEnter') {
             const enemyPosition = enemy.position
