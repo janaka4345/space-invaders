@@ -12,6 +12,7 @@ export function addPlayer() {
     const player = Bodies.rectangle(cw / 2, ch - 60, 50, 50, {
         isStatic: true,
         label: "player",
+        health: 100
     })
     usePlayerState.setState({ player })
     Composite.add(engine.world, [player]);
