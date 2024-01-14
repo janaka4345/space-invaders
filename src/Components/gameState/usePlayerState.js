@@ -2,6 +2,7 @@ import { create } from 'zustand'
 
 const usePlayerState = create((set) => ({
     player: null,
+    playerGraphic: null,
     playerState: 'Idle',
     playerVelocityX: 5,
     playerVelocityY: 5,
@@ -28,7 +29,13 @@ const usePlayerState = create((set) => ({
     //damage is negative by enemies and positive my health packs
     setHealth: (damage) => set((state) => ({
         health: state.health + damage
-    }))
+    })),
+    setPlayerGraphic: (graphic) => {
+        console.log('graphic set');
+        set((state) => ({
+            playerGraphic: graphic
+        }))
+    }
 
 }))
 export default usePlayerState;
