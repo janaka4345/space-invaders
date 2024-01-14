@@ -17,11 +17,15 @@ export default function drawPlayer(body, p5) {
         body.vertices[3].x,
         body.vertices[3].y
     );
+
+
     p5.pop();
     p5.push()
     p5.fill(0);
     p5.textSize(32);
     p5.text(body.health, body.vertices[0].x, body.vertices[0].y)
+
+
     p5.pop()
     p5.push()
     p5.fill(255, 0, 0);
