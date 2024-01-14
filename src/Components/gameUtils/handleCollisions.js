@@ -56,9 +56,18 @@ export default function handleCollisions(p5) {
         }
         //missed  projectiles colliding with the wall
         if ((pair.bodyA.label === "wall" && pair.bodyB.label === "projectilesFired")) {
-            Body.setPosition(pair.bodyB, { x: - Math.random() * 120 - 120, y: - Math.random() * 120 - 120 })
+            Body.setPosition(pair.bodyB, { x: - Math.random() * 120, y: - Math.random() * 120 })
             Body.setVelocity(pair.bodyB, { x: 0, y: 0 })
             pair.bodyB.label = 'projectiles'
+        }
+        //enemy projectile   colliding with  projectiles
+        if ((pair.bodyA.label === "projectilesFired" && pair.bodyB.label === "enemyProjectileFired")) {
+            Body.setPosition(pair.bodyA, { x: - Math.random() * 120, y: - Math.random() * 120 })
+            Body.setVelocity(pair.bodyA, { x: 0, y: 0 })
+            pair.bodyA.label = 'projectiles'
+            Body.setPosition(pair.bodyB, { x: - Math.random() * 120 - 120, y: - Math.random() * 120 - 120 })
+            Body.setVelocity(pair.bodyB, { x: 0, y: 0 })
+            pair.bodyB.label = 'enemyProjectiles'
         }
 
 
