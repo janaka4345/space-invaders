@@ -2,6 +2,7 @@ import { create } from 'zustand'
 
 const usePlayerState = create((set) => ({
     player: null,
+    playerShader: null,
     playerGraphic: null,
     playerState: 'Idle',
     playerVelocityX: 5,
@@ -30,12 +31,12 @@ const usePlayerState = create((set) => ({
     setHealth: (damage) => set((state) => ({
         health: state.health + damage
     })),
-    setPlayerGraphic: (graphic) => {
-        console.log('graphic set');
-        set((state) => ({
-            playerGraphic: graphic
-        }))
-    }
+    setPlayerGraphic: (graphic) => set((state) => ({
+        playerGraphic: graphic
+    })),
+    setPlayerShader: (shader) => set(state => ({
+        playerShader: shader
+    }))
 
 }))
 export default usePlayerState;
