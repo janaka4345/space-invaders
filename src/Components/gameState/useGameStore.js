@@ -9,6 +9,8 @@ const useGameStore = create(devtools((set) => ({
     cw: 400,
     ch: 400,
     engine,
+    enemyGraphic: null,
+    enemyShader: null,
     backgroundImage: null,
     beetleImage: null,
     playerjetsImage: null,
@@ -31,7 +33,13 @@ const useGameStore = create(devtools((set) => ({
     })),
     setHeight: (height) => set((state) => ({
         ch: height
-    }))
+    })),
+    setEnemyGraphic: (graphics) => set({
+        enemyGraphic: graphics
+    }),
+    setEnemyShader: (shader) => set({
+        enemyShader: shader
+    })
 
 
 })))

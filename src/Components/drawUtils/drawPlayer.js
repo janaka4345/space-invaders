@@ -19,6 +19,7 @@ export default function drawPlayer(body, p5) {
     p5.push()
     p5.imageMode(p5.CENTER);
     p5.translate(body.position.x, body.position.y);
+    p5.rotate(body.angle)
     // //math.pi/2 adsedd dependinfgg on the sprite's orienation at angle 0
     // p5.rotate(body.angle + Math.PI / 2);
     p5.image(playerGraphics, 0, 0, 100, 100, 0, 0, playerGraphics.width, playerGraphics.height)
